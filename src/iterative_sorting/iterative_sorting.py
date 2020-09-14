@@ -2,23 +2,43 @@
 def selection_sort(arr):
     # loop through n-1 elements
     for i in range(0, len(arr) - 1):
-        cur_index = i
-        smallest_index = cur_index
-        # TO-DO: find next smallest element
-        # (hint, can do in 3 loc)
-        # Your code here
+        # this will be where we start each loop. since sorting small to large,
+        # we won't have any values below boundary
+        boundary = i
+        num_small = boundary
 
+        # on each cycle, compare our current smallest value (which starts at boundary index) to the value at each concurrent index
+        for j in range(boundary + 1, len(arr)):
 
-        # TO-DO: swap
-        # Your code here
+            # if a smaller value is found, set it to smallest
+            if arr[j] < arr[num_small]:
+                num_small = j
+
+        # when we've gone through the array, sort the smallest value into the list by swapping it with our boundary position
+        arr[num_small], arr[boundary] = arr[boundary], arr[num_small]
 
     return arr
 
 
 # TO-DO:  implement the Bubble Sort function below
-def bubble_sort(arr):
-    # Your code here
-
+def bubble_sort(arr): 
+    n = len(arr) 
+   
+    # Iterate over each element in array
+    for i in range(n): 
+        swapped = False
+  
+        # The largest element is pushed into place with each loop:
+        for j in range(0, n-i-1): 
+   
+            # loop and compare from beginning of array to the last unsorted element
+            if arr[j] > arr[j+1] : 
+                arr[j], arr[j+1] = arr[j+1], arr[j] 
+                swapped = True
+  
+        # if j loop doesn't make any changes in this cycle, break out of the algorithm early
+        if swapped == False: 
+            break
 
     return arr
 
